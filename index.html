@@ -1,362 +1,358 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de Funciones de Gemini en Google Workspace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .plan-toggle.active {
+            background-color: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+        .plan-toggle {
+            transition: all 0.2s ease-in-out;
+        }
+        .table-cell-placeholder {
+            min-width: 120px;
+        }
+        .feature-link {
+            text-decoration: underline;
+            color: #4f46e5;
+        }
+        .feature-link:hover {
+            color: #3730a3;
+        }
+    </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="es"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Explorador de Funciones de Gemini en Google Workspace&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8fafc;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #334155;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.chart-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 800px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-left: auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-right: auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 300px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-height: 400px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media (min-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.chart-container {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>height: 350px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.plan-toggle.active {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #4f46e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-color: #4f46e5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.plan-toggle {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s ease-in-out;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.table-cell-placeholder {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>min-width: 120px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="antialiased"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container mx-auto p-4 sm:p-6 md:p-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;header class="text-center mb-8 md:mb-12"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800"&gt;Explorador Interactivo de Funciones de Gemini&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="mt-2 text-lg text-slate-600 max-w-3xl mx-auto"&gt;Compara las capacidades de IA generativa incluidas en las diferentes ediciones de Google Workspace.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;main&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="controls" class="mb-8 p-6 bg-white rounded-xl shadow-md"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-xl font-semibold text-slate-700 mb-4"&gt;Selecciona las ediciones de Workspace a comparar:&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="plan-toggles" class="flex flex-wrap gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="summary-chart" class="mb-8 md:mb-12 p-6 bg-white rounded-xl shadow-md"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h2 class="text-xl font-semibold text-slate-700 mb-4 text-center"&gt;Resumen Visual de Capacidades de IA&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;p class="text-center text-slate-500 mb-6"&gt;Este gráfico muestra un recuento aproximado de las funciones de IA clave por edición para una comparación rápida.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;canvas id="features-chart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="comparison-table-container" class="bg-white rounded-xl shadow-md overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-xl font-semibold text-slate-700"&gt;Tabla Comparativa de Funciones Detalladas&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-slate-500 mt-1"&gt;Usa los selectores de arriba para añadir o quitar planes de esta tabla.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="overflow-x-auto"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;table id="comparison-table" class="w-full text-sm text-left text-slate-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;thead class="text-xs text-slate-700 uppercase bg-slate-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/thead&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tbody&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tbody&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div id="no-selection-message" class="hidden text-center p-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-slate-500 font-semibold"&gt;Por favor, selecciona al menos una edición de Workspace para ver la comparativa.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/main&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;footer class="text-center mt-12 text-slate-400 text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Esta es una visualización interactiva de las funciones de Gemini en Google Workspace.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;La información está basada en datos públicos de Google y está sujeta a cambios.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const planData = {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'business-starter': { name: 'Business Starter', shortName: 'Starter', color: '#60a5fa', features: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'gemini-app-access': 'Básico (2.5 Flash)', 'context-window': '32,000 tokens', 'notebook-lm': 'Básico', 'notebook-lm-premium': false, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': false, 'chat-summary': false, 'chat-translate': false, 'meet-notes': false, 'meet-studio': false, 'meet-captions': false, 'meet-watermark': false, 'docs-panel': false, 'docs-write': false, 'docs-image': false, 'docs-summary': false, 'sheets-panel': false, 'sheets-fill': false, 'slides-panel': false, 'slides-image': false, 'slides-bg': false, 'drive-panel': false, 'drive-pdf': false, 'vids': 'Limitado', 'drive-ai-classification': false</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'business-standard': { name: 'Business Standard', shortName: 'Standard', color: '#818cf8', features: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'gemini-app-access': 'Expandido (2.5 Pro)', 'context-window': '1M tokens', 'notebook-lm': '5x más uso', 'notebook-lm-premium': false, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': true, 'chat-summary': true, 'chat-translate': true, 'meet-notes': true, 'meet-studio': true, 'meet-captions': true, 'meet-watermark': false, 'docs-panel': true, 'docs-write': true, 'docs-image': true, 'docs-summary': true, 'sheets-panel': true, 'sheets-fill': true, 'slides-panel': true, 'slides-image': true, 'slides-bg': true, 'drive-panel': true, 'drive-pdf': true, 'vids': 'Limitado', 'drive-ai-classification': false</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'business-plus': { name: 'Business Plus', shortName: 'Plus', color: '#a78bfa', features: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'gemini-app-access': 'Expandido (2.5 Pro)', 'context-window': '1M tokens', 'notebook-lm': '5x más uso', 'notebook-lm-premium': false, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': true, 'chat-summary': true, 'chat-translate': true, 'meet-notes': true, 'meet-studio': true, 'meet-captions': true, 'meet-watermark': true, 'docs-panel': true, 'docs-write': true, 'docs-image': true, 'docs-summary': true, 'sheets-panel': true, 'sheets-fill': true, 'slides-panel': true, 'slides-image': true, 'slides-bg': true, 'drive-panel': true, 'drive-pdf': true, 'vids': 'Limitado', 'drive-ai-classification': false</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'enterprise-standard': { name: 'Enterprise Standard', shortName: 'Ent. Standard', color: '#f472b6', features: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'gemini-app-access': 'Expandido (2.5 Pro)', 'context-window': '1M tokens', 'notebook-lm': '5x más uso', 'notebook-lm-premium': false, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': true, 'chat-summary': true, 'chat-translate': true, 'meet-notes': true, 'meet-studio': true, 'meet-captions': true, 'meet-watermark': true, 'docs-panel': true, 'docs-write': true, 'docs-image': true, 'docs-summary': true, 'sheets-panel': true, 'sheets-fill': true, 'slides-panel': true, 'slides-image': true, 'slides-bg': true, 'drive-panel': true, 'drive-pdf': true, 'vids': 'Limitado', 'drive-ai-classification': false</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'enterprise-plus': { name: 'Enterprise Plus', shortName: 'Ent. Plus', color: '#fb7185', features: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'gemini-app-access': 'Expandido (2.5 Pro)', 'context-window': '1M tokens', 'notebook-lm': '5x más uso', 'notebook-lm-premium': true, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': true, 'chat-summary': true, 'chat-translate': true, 'meet-notes': true, 'meet-studio': true, 'meet-captions': true, 'meet-watermark': true, 'docs-panel': true, 'docs-write': true, 'docs-image': true, 'docs-summary': true, 'sheets-panel': true, 'sheets-fill': true, 'slides-panel': true, 'slides-image': true, 'slides-bg': true, 'drive-panel': true, 'drive-pdf': true, 'vids': 'Limitado', 'drive-ai-classification': true</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>const featureCategories = [</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 'general', name: 'Capacidades Generales y Modelos', features: ['gemini-app-access', 'context-window', 'notebook-lm', 'notebook-lm-premium'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 'gmail', name: 'Gmail', features: ['gmail-write', 'gmail-panel', 'gmail-contextual'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 'meet', name: 'Google Meet', features: ['meet-notes', 'meet-studio', 'meet-captions', 'meet-watermark'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 'docs_sheets_slides', name: 'Docs, Sheets y Slides', features: ['docs-panel', 'docs-write', 'docs-image', 'docs-summary', 'sheets-panel', 'sheets-fill', 'slides-panel', 'slides-image', 'slides-bg']},</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 'chat_drive_vids', name: 'Chat, Drive y Vids', features: ['chat-panel', 'chat-summary', 'chat-translate', 'drive-panel', 'drive-pdf', 'vids'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 'security', name: 'Seguridad y Administración', features: ['drive-ai-classification'] }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>const featureDetails = {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'gemini-app-access': { name: 'Acceso a Gemini y modelo' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'context-window': { name: 'Ventana de contexto' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'notebook-lm': { name: 'NotebookLM (Uso)' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'notebook-lm-premium': { name: 'NotebookLM (Funciones Premium)' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'gmail-write': { name: 'Ayúdame a escribir' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'gmail-panel': { name: 'Panel lateral de Gemini' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'gmail-contextual': { name: 'Respuestas inteligentes contextuales' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'chat-panel': { name: 'Panel lateral en Chat' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'chat-summary': { name: 'Resumir conversaciones' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'chat-translate': { name: 'Traducción automática' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'meet-notes': { name: 'Tomar notas por mí' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'meet-studio': { name: 'Mejoras de Audio/Video (Studio)' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'meet-captions': { name: 'Subtítulos traducidos' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'meet-watermark': { name: 'Marca de agua (Watermarking)' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'docs-panel': { name: 'Panel lateral en Docs' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'docs-write': { name: 'Ayúdame a escribir en Docs' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'docs-image': { name: 'Crear imagen en Docs' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'docs-summary': { name: 'Resumir documento' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'sheets-panel': { name: 'Panel lateral en Sheets' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'sheets-fill': { name: 'Relleno inteligente mejorado' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'slides-panel': { name: 'Panel lateral en Slides' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'slides-image': { name: 'Crear imagen en Slides' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'slides-bg': { name: 'Quitar fondo de imagen' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'drive-panel': { name: 'Panel lateral en Drive' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'drive-pdf': { name: 'Analizar y resumir PDFs' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'vids': { name: 'Google Vids (Creación de video)' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'drive-ai-classification': { name: 'Clasificación de IA en Drive' }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>let selectedPlans = Object.keys(planData);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let featuresChart = null;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function renderToggles() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('plan-toggles');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>for (const planId in planData) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const plan = planData[planId];</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const button = document.createElement('button');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>button.dataset.planId = planId;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>button.textContent = plan.name;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>button.className = `plan-toggle font-medium py-2 px-4 rounded-lg border-2 border-slate-300 text-slate-700`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (selectedPlans.includes(planId)) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>button.classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>button.addEventListener('click', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>togglePlan(planId);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>});</p>
-<p class="p1"><span class="Apple-converted-space">                </span>container.appendChild(button);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function togglePlan(planId) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const index = selectedPlans.indexOf(planId);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (index &gt; -1) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (selectedPlans.length &gt; 1) {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>selectedPlans.splice(index, 1);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>selectedPlans.push(planId);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>render();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function renderTable() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const table = document.getElementById('comparison-table');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const thead = table.querySelector('thead');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const tbody = table.querySelector('tbody');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const noSelectionMessage = document.getElementById('no-selection-message');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const tableContainer = document.getElementById('comparison-table-container');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>thead.innerHTML = '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>tbody.innerHTML = '';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (selectedPlans.length === 0) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>table.classList.add('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>noSelectionMessage.classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>table.classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>noSelectionMessage.classList.add('hidden');</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>selectedPlans.sort((a,b) =&gt; Object.keys(planData).indexOf(a) - Object.keys(planData).indexOf(b));</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const headerRow = document.createElement('tr');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>headerRow.innerHTML = `&lt;th scope="col" class="py-3 px-6 table-cell-placeholder"&gt;Función&lt;/th&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>selectedPlans.forEach(planId =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const plan = planData[planId];</p>
-<p class="p1"><span class="Apple-converted-space">                </span>headerRow.innerHTML += `&lt;th scope="col" class="py-3 px-6 text-center"&gt;${plan.name}&lt;/th&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">            </span>thead.appendChild(headerRow);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>featureCategories.forEach(category =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const categoryRow = document.createElement('tr');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>categoryRow.className = 'bg-slate-100';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>categoryRow.innerHTML = `&lt;td colspan="${selectedPlans.length + 1}" class="py-3 px-6 font-semibold text-slate-800"&gt;${category.name}&lt;/td&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>tbody.appendChild(categoryRow);</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>category.features.forEach(featureId =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>const feature = featureDetails[featureId];</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>const featureRow = document.createElement('tr');</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>featureRow.className = 'bg-white border-b';</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>featureRow.innerHTML = `&lt;td class="py-4 px-6 font-medium text-slate-900"&gt;${feature.name}&lt;/td&gt;`;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>selectedPlans.forEach(planId =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>const planFeature = planData[planId].features[featureId];</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>let cellContent = '';</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>if (typeof planFeature === 'boolean') {</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>cellContent = planFeature ? '&lt;span class="text-emerald-500 text-xl"&gt;✔&lt;/span&gt;' : '&lt;span class="text-rose-400 text-xl"&gt;✖&lt;/span&gt;';</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>cellContent = `&lt;span class="text-slate-600"&gt;${planFeature}&lt;/span&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>featureRow.innerHTML += `&lt;td class="py-4 px-6 text-center"&gt;${cellContent}&lt;/td&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>tbody.appendChild(featureRow);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>});</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function renderChart() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const ctx = document.getElementById('features-chart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const visiblePlans = selectedPlans.map(id =&gt; planData[id]);</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const countFeatures = (plan) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>return Object.values(plan.features).filter(value =&gt; value === true || (typeof value === 'string' &amp;&amp; value !== 'Básico' &amp;&amp; value !== 'Limitado')).length;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const data = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>labels: visiblePlans.map(p =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>const label = p.name;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>if (label.length &gt; 16) {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>const words = label.split(' ');</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>const lines = [];</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>let currentLine = '';</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>words.forEach(word =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>if ((currentLine + ' ' + word).trim().length &gt; 16) {</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>lines.push(currentLine.trim());</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>currentLine = word;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>currentLine = (currentLine + ' ' + word).trim();</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>lines.push(currentLine.trim());</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>return lines;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>return label;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}),</p>
-<p class="p1"><span class="Apple-converted-space">                </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>label: 'Funciones Clave de IA',</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>data: visiblePlans.map(p =&gt; countFeatures(p)),</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>backgroundColor: visiblePlans.map(p =&gt; p.color),</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>borderColor: visiblePlans.map(p =&gt; p.color),</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>borderWidth: 1</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const options = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>indexAxis: 'y',</p>
-<p class="p1"><span class="Apple-converted-space">                </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>maintainAspectRatio: false,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>plugins: {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>legend: {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>display: false</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>tooltip: {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>callbacks: {</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>title: function(tooltipItems) {</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>const item = tooltipItems[0];</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>let label = item.chart.data.labels[item.dataIndex];</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>if (Array.isArray(label)) {</p>
-<p class="p1"><span class="Apple-converted-space">                                  </span>return label.join(' ');</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                                  </span>return label;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>},</p>
-<p class="p1"><span class="Apple-converted-space">                </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>x: {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>beginAtZero: true,</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>grid: {</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>color: '#e2e8f0'</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>ticks: {</p>
-<p class="p1"><span class="Apple-converted-space">                           </span>color: '#64748b'</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>grid: {</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>display: false</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>ticks: {</p>
-<p class="p1"><span class="Apple-converted-space">                           </span>color: '#334155',</p>
-<p class="p1"><span class="Apple-converted-space">                           </span>font: {</p>
-<p class="p1"><span class="Apple-converted-space">                               </span>weight: '500'</p>
-<p class="p1"><span class="Apple-converted-space">                           </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (featuresChart) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>featuresChart.data = data;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>featuresChart.update();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>featuresChart = new Chart(ctx, {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>data: data,</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>options: options</p>
-<p class="p1"><span class="Apple-converted-space">                </span>});</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function render() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>renderToggles();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>renderTable();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>renderChart();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', render);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8">
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800">Explorador Interactivo de Funciones de Gemini</h1>
+            <p class="mt-2 text-lg text-slate-600 max-w-3xl mx-auto">Compara las capacidades de IA generativa incluidas en las diferentes ediciones de Google Workspace.</p>
+        </header>
+
+        <main>
+            <section id="controls" class="mb-8 p-6 bg-white rounded-xl shadow-md">
+                <h2 class="text-xl font-semibold text-slate-700 mb-4">Selecciona las ediciones de Workspace a comparar:</h2>
+                <div id="plan-toggles" class="flex flex-wrap gap-3">
+                </div>
+            </section>
+
+            <section id="summary-chart" class="mb-8 md:mb-12 p-6 bg-white rounded-xl shadow-md">
+                 <h2 class="text-xl font-semibold text-slate-700 mb-4 text-center">Resumen Visual de Capacidades de IA</h2>
+                 <p class="text-center text-slate-500 mb-6">Este gráfico muestra un recuento aproximado de las funciones de IA clave por edición para una comparación rápida.</p>
+                <div class="chart-container">
+                    <canvas id="features-chart"></canvas>
+                </div>
+            </section>
+
+            <section id="comparison-table-container" class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-slate-700">Tabla Comparativa de Funciones Detalladas</h2>
+                    <p class="text-slate-500 mt-1">Usa los selectores de arriba para añadir o quitar planes de esta tabla.</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table id="comparison-table" class="w-full text-sm text-left text-slate-500">
+                        <thead class="text-xs text-slate-700 uppercase bg-slate-50">
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                 <div id="no-selection-message" class="hidden text-center p-10">
+                    <p class="text-slate-500 font-semibold">Por favor, selecciona al menos una edición de Workspace para ver la comparativa.</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center mt-12 text-slate-400 text-sm">
+            <p>Esta es una visualización interactiva de las funciones de Gemini en Google Workspace.</p>
+            <p>La información está basada en datos públicos de Google y está sujeta a cambios.</p>
+        </footer>
+    </div>
+
+    <script>
+        const planData = {
+            'business-starter': { name: 'Business Starter', shortName: 'Starter', color: '#60a5fa', features: {
+                'gemini-app-access': 'Básico (2.5 Flash)', 'context-window': '32,000 tokens', 'notebook-lm': 'Básico', 'notebook-lm-premium': false, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': false, 'chat-summary': false, 'chat-translate': false, 'meet-notes': false, 'meet-studio': false, 'meet-captions': false, 'meet-watermark': false, 'docs-panel': false, 'docs-write': false, 'docs-image': false, 'docs-summary': false, 'sheets-panel': false, 'sheets-fill': false, 'slides-panel': false, 'slides-image': false, 'slides-bg': false, 'drive-panel': false, 'drive-pdf': false, 'vids': 'Limitado', 'drive-ai-classification': false
+            }},
+            'business-standard': { name: 'Business Standard', shortName: 'Standard', color: '#818cf8', features: {
+                'gemini-app-access': 'Expandido (2.5 Pro)', 'context-window': '1M tokens', 'notebook-lm': '5x más uso', 'notebook-lm-premium': false, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': true, 'chat-summary': true, 'chat-translate': true, 'meet-notes': true, 'meet-studio': true, 'meet-captions': true, 'meet-watermark': false, 'docs-panel': true, 'docs-write': true, 'docs-image': true, 'docs-summary': true, 'sheets-panel': true, 'sheets-fill': true, 'slides-panel': true, 'slides-image': true, 'slides-bg': true, 'drive-panel': true, 'drive-pdf': true, 'vids': 'Limitado', 'drive-ai-classification': false
+            }},
+            'business-plus': { name: 'Business Plus', shortName: 'Plus', color: '#a78bfa', features: {
+                'gemini-app-access': 'Expandido (2.5 Pro)', 'context-window': '1M tokens', 'notebook-lm': '5x más uso', 'notebook-lm-premium': false, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': true, 'chat-summary': true, 'chat-translate': true, 'meet-notes': true, 'meet-studio': true, 'meet-captions': true, 'meet-watermark': true, 'docs-panel': true, 'docs-write': true, 'docs-image': true, 'docs-summary': true, 'sheets-panel': true, 'sheets-fill': true, 'slides-panel': true, 'slides-image': true, 'slides-bg': true, 'drive-panel': true, 'drive-pdf': true, 'vids': 'Limitado', 'drive-ai-classification': false
+            }},
+            'enterprise-standard': { name: 'Enterprise Standard', shortName: 'Ent. Standard', color: '#f472b6', features: {
+                'gemini-app-access': 'Expandido (2.5 Pro)', 'context-window': '1M tokens', 'notebook-lm': '5x más uso', 'notebook-lm-premium': false, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': true, 'chat-summary': true, 'chat-translate': true, 'meet-notes': true, 'meet-studio': true, 'meet-captions': true, 'meet-watermark': true, 'docs-panel': true, 'docs-write': true, 'docs-image': true, 'docs-summary': true, 'sheets-panel': true, 'sheets-fill': true, 'slides-panel': true, 'slides-image': true, 'slides-bg': true, 'drive-panel': true, 'drive-pdf': true, 'vids': 'Limitado', 'drive-ai-classification': false
+            }},
+            'enterprise-plus': { name: 'Enterprise Plus', shortName: 'Ent. Plus', color: '#fb7185', features: {
+                'gemini-app-access': 'Expandido (2.5 Pro)', 'context-window': '1M tokens', 'notebook-lm': '5x más uso', 'notebook-lm-premium': true, 'gmail-write': true, 'gmail-panel': true, 'gmail-contextual': true, 'chat-panel': true, 'chat-summary': true, 'chat-translate': true, 'meet-notes': true, 'meet-studio': true, 'meet-captions': true, 'meet-watermark': true, 'docs-panel': true, 'docs-write': true, 'docs-image': true, 'docs-summary': true, 'sheets-panel': true, 'sheets-fill': true, 'slides-panel': true, 'slides-image': true, 'slides-bg': true, 'drive-panel': true, 'drive-pdf': true, 'vids': 'Limitado', 'drive-ai-classification': true
+            }}
+        };
+
+        const featureCategories = [
+            { id: 'general', name: 'Capacidades Generales y Modelos', features: ['gemini-app-access', 'context-window', 'notebook-lm', 'notebook-lm-premium'] },
+            { id: 'gmail', name: 'Gmail', features: ['gmail-write', 'gmail-panel', 'gmail-contextual'] },
+            { id: 'meet', name: 'Google Meet', features: ['meet-notes', 'meet-studio', 'meet-captions', 'meet-watermark'] },
+            { id: 'docs_sheets_slides', name: 'Docs, Sheets y Slides', features: ['docs-panel', 'docs-write', 'docs-image', 'docs-summary', 'sheets-panel', 'sheets-fill', 'slides-panel', 'slides-image', 'slides-bg']},
+            { id: 'chat_drive_vids', name: 'Chat, Drive y Vids', features: ['chat-panel', 'chat-summary', 'chat-translate', 'drive-panel', 'drive-pdf', 'vids'] },
+            { id: 'security', name: 'Seguridad y Administración', features: ['drive-ai-classification'] }
+        ];
+
+        const featureDetails = {
+            'gemini-app-access': { name: 'Acceso a Gemini y modelo', link: 'https://support.google.com/a/answer/14700766?hl=es' },
+            'context-window': { name: 'Ventana de contexto', link: 'https://ai.google.dev/gemini-api/docs/models' },
+            'notebook-lm': { name: 'NotebookLM (Uso)', link: 'https://cloud.google.com/resources/notebooklm-enterprise?hl=es-419' },
+            'notebook-lm-premium': { name: 'NotebookLM (Funciones Premium)', link: 'https://cloud.google.com/resources/notebooklm-enterprise?hl=es-419' },
+            'gmail-write': { name: 'Ayúdame a escribir', link: 'https://support.google.com/mail/answer/13384326?hl=es' },
+            'gmail-panel': { name: 'Panel lateral de Gemini', link: 'https://support.google.com/a/answer/13623623?hl=es' },
+            'gmail-contextual': { name: 'Respuestas inteligentes contextuales', link: 'https://support.google.com/mail/answer/13384326?hl=es' },
+            'chat-panel': { name: 'Panel lateral en Chat', link: 'https://support.google.com/a/answer/13623623?hl=es' },
+            'chat-summary': { name: 'Resumir conversaciones', link: 'https://support.google.com/chat/answer/12918975?hl=es' },
+            'chat-translate': { name: 'Traducción automática', link: 'https://support.google.com/a/answer/14700766?hl=es' }, // Link to general Gemini features page for Chat translation
+            'meet-notes': { name: 'Tomar notas por mí', link: 'https://meetgeek.ai/es/blog/google-meet-ai' }, // Found a good third-party explanation
+            'meet-studio': { name: 'Mejoras de Audio/Video (Studio)', link: 'https://support.google.com/a/answer/14700766?hl=es' },
+            'meet-captions': { name: 'Subtítulos traducidos', link: 'https://support.google.com/a/answer/14700766?hl=es' },
+            'meet-watermark': { name: 'Marca de agua (Watermarking)', link: 'https://support.google.com/a/answer/14700766?hl=es' },
+            'docs-panel': { name: 'Panel lateral en Docs', link: 'https://support.google.com/docs/answer/14206696?hl=es' },
+            'docs-write': { name: 'Ayúdame a escribir en Docs', link: 'https://support.google.com/docs/answer/13951448?hl=es' },
+            'docs-image': { name: 'Crear imagen en Docs', link: 'https://workspace.google.com/intl/es-419/products/slides/' }, // General Slides page mentioning image generation
+            'docs-summary': { name: 'Resumir documento', link: 'https://support.google.com/docs/answer/14206696?hl=es' },
+            'sheets-panel': { name: 'Panel lateral en Sheets', link: 'https://support.google.com/docs/answer/14356410?hl=es' },
+            'sheets-fill': { name: 'Relleno inteligente mejorado', link: 'https://support.google.com/docs/answer/14356410?hl=es' },
+            'slides-panel': { name: 'Panel lateral en Slides', link: 'https://support.google.com/a/answer/13623623?hl=es' },
+            'slides-image': { name: 'Crear imagen en Slides', link: 'https://workspace.google.com/intl/es-419/products/slides/' },
+            'slides-bg': { name: 'Quitar fondo de imagen', link: 'https://workspace.google.com/intl/es-419/products/slides/' },
+            'drive-panel': { name: 'Panel lateral en Drive', link: 'https://support.google.com/a/answer/13623623?hl=es' },
+            'drive-pdf': { name: 'Analizar y resumir PDFs', link: 'https://support.google.com/gemini/answer/14903178?hl=es' },
+            'vids': { name: 'Google Vids (Creación de video)', link: 'https://workspace.google.com/products/vids/' },
+            'drive-ai-classification': { name: 'Clasificación de IA en Drive', link: 'https://workspace.trace.pt/es/ai-classification-in-google-drive-is-now-available-for-the-gemini-education-premium-add-on/' } // Found a relevant third-party article
+        };
+
+        let selectedPlans = Object.keys(planData);
+        let featuresChart = null;
+
+        function renderToggles() {
+            const container = document.getElementById('plan-toggles');
+            container.innerHTML = '';
+            for (const planId in planData) {
+                const plan = planData[planId];
+                const button = document.createElement('button');
+                button.dataset.planId = planId;
+                button.textContent = plan.name;
+                button.className = `plan-toggle font-medium py-2 px-4 rounded-lg border-2 border-slate-300 text-slate-700`;
+                if (selectedPlans.includes(planId)) {
+                    button.classList.add('active');
+                }
+                button.addEventListener('click', () => {
+                    togglePlan(planId);
+                });
+                container.appendChild(button);
+            }
+        }
+
+        function togglePlan(planId) {
+            const index = selectedPlans.indexOf(planId);
+            if (index > -1) {
+                if (selectedPlans.length > 1) { 
+                    selectedPlans.splice(index, 1);
+                }
+            } else {
+                selectedPlans.push(planId);
+            }
+            render();
+        }
+        
+        function renderTable() {
+            const table = document.getElementById('comparison-table');
+            const thead = table.querySelector('thead');
+            const tbody = table.querySelector('tbody');
+            const noSelectionMessage = document.getElementById('no-selection-message');
+            const tableContainer = document.getElementById('comparison-table-container');
+
+            thead.innerHTML = '';
+            tbody.innerHTML = '';
+
+            if (selectedPlans.length === 0) {
+                table.classList.add('hidden');
+                noSelectionMessage.classList.remove('hidden');
+                return;
+            }
+
+            table.classList.remove('hidden');
+            noSelectionMessage.classList.add('hidden');
+            
+            selectedPlans.sort((a,b) => Object.keys(planData).indexOf(a) - Object.keys(planData).indexOf(b));
+
+            const headerRow = document.createElement('tr');
+            headerRow.innerHTML = `<th scope="col" class="py-3 px-6 table-cell-placeholder">Función</th>`;
+            selectedPlans.forEach(planId => {
+                const plan = planData[planId];
+                headerRow.innerHTML += `<th scope="col" class="py-3 px-6 text-center">${plan.name}</th>`;
+            });
+            thead.appendChild(headerRow);
+
+            featureCategories.forEach(category => {
+                const categoryRow = document.createElement('tr');
+                categoryRow.className = 'bg-slate-100';
+                categoryRow.innerHTML = `<td colspan="${selectedPlans.length + 1}" class="py-3 px-6 font-semibold text-slate-800">${category.name}</td>`;
+                tbody.appendChild(categoryRow);
+                
+                category.features.forEach(featureId => {
+                    const feature = featureDetails[featureId];
+                    const featureRow = document.createElement('tr');
+                    featureRow.className = 'bg-white border-b';
+                    
+                    let featureNameHtml = feature.name;
+                    if (feature.link) {
+                        featureNameHtml = `<a href="${feature.link}" target="_blank" rel="noopener noreferrer" class="feature-link">${feature.name}</a>`;
+                    }
+                    featureRow.innerHTML = `<td class="py-4 px-6 font-medium text-slate-900">${featureNameHtml}</td>`;
+
+                    selectedPlans.forEach(planId => {
+                        const planFeature = planData[planId].features[featureId];
+                        let cellContent = '';
+                        if (typeof planFeature === 'boolean') {
+                            cellContent = planFeature ? '<span class="text-emerald-500 text-xl">✔</span>' : '<span class="text-rose-400 text-xl">✖</span>';
+                        } else {
+                            cellContent = `<span class="text-slate-600">${planFeature}</span>`;
+                        }
+                        featureRow.innerHTML += `<td class="py-4 px-6 text-center">${cellContent}</td>`;
+                    });
+                    tbody.appendChild(featureRow);
+                });
+            });
+        }
+
+        function renderChart() {
+            const ctx = document.getElementById('features-chart').getContext('2d');
+            const visiblePlans = selectedPlans.map(id => planData[id]);
+            
+            const countFeatures = (plan) => {
+                return Object.values(plan.features).filter(value => value === true || (typeof value === 'string' && value !== 'Básico' && value !== 'Limitado')).length;
+            };
+
+            const data = {
+                labels: visiblePlans.map(p => {
+                    const label = p.name;
+                    if (label.length > 16) {
+                        const words = label.split(' ');
+                        const lines = [];
+                        let currentLine = '';
+                        words.forEach(word => {
+                            if ((currentLine + ' ' + word).trim().length > 16) {
+                                lines.push(currentLine.trim());
+                                currentLine = word;
+                            } else {
+                                currentLine = (currentLine + ' ' + word).trim();
+                            }
+                        });
+                        lines.push(currentLine.trim());
+                        return lines;
+                    }
+                    return label;
+                }),
+                datasets: [{
+                    label: 'Funciones Clave de IA',
+                    data: visiblePlans.map(p => countFeatures(p)),
+                    backgroundColor: visiblePlans.map(p => p.color),
+                    borderColor: visiblePlans.map(p => p.color),
+                    borderWidth: 1
+                }]
+            };
+
+            const options = {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                           color: '#64748b'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                           color: '#334155',
+                           font: {
+                               weight: '500'
+                           }
+                        }
+                    }
+                }
+            };
+
+            if (featuresChart) {
+                featuresChart.data = data;
+                featuresChart.update();
+            } else {
+                featuresChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: options
+                });
+            }
+        }
+
+        function render() {
+            renderToggles();
+            renderTable();
+            renderChart();
+        }
+
+        document.addEventListener('DOMContentLoaded', render);
+
+    </script>
 </body>
 </html>
